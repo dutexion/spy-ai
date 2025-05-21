@@ -1,0 +1,75 @@
+{
+  "name": "spy-ai",
+  "displayName": "Spy AI",
+  "description": "AI-powered coding assistant for algorithm tests",
+  "version": "0.0.1",
+  "publisher": "dutexion",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:spy-ai.request"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "spy-ai.request",
+        "title": "AI Request"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "spy-ai.request",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "spy-ai.request",
+          "group": "navigation",
+          "when": "resourceLangId"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "spy-ai.request",
+          "group": "navigation",
+          "when": "editorLangId"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.13.0",
+    "typescript": "^4.7.2"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "node-fetch": "^2.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dutexion/spy-ai"
+  },
+  "icon": "images/icon.png",
+  "license": "MIT"
+}
